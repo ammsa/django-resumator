@@ -1,8 +1,8 @@
 =====
-Resumator
+django-resumator
 =====
 
-Resumator is a lightwight app to create web-based resumes.
+django-resumator is a lightwight app to create web-based resumes. Please visit (theresumator)[https://github.com/AmmsA/theresumator] for a django project that uses it. 
 
 Quick start
 -----------
@@ -26,7 +26,7 @@ Quick start
 
     urlpatterns = [
         ...
-        url(r'^', include('resumator.urls')),
+        url(r'^resume/', include('resumator.urls')),
         ...
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
