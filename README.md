@@ -54,4 +54,4 @@ Quick start
 
 ## License
 
-All parts of theresumator are free to use and abuse under the [open-source MIT license](https://github.com/AmmsA/django-resumator/blob/master/LICENSE.md).
+All parts of theresumator are free to use and abuse under the [open-source MIT license](https://github.com/AmmsA/django-resumator/blob/master/LICENSE).
