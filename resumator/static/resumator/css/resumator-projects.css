@@ -1,0 +1,31 @@
+.resumator-project{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #555555;
+}
+.resumator-project a,
+.resumator-project a{
+    color: #555555;
+}
+.resumator-project a:hover,
+.resumator-project a:hover{
+    color: #000000;
+}
+.resumator-project p{
+    font-size: 14px;
+}
+.resumator-project .description{
+    min-height: 120px;
+    border-bottom: thin solid #eeeeee;
+}
+.resumator-project .date{
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+.resumator-project .limit{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.resumator-project .tags{
+    margin-bottom: 10px;
+}

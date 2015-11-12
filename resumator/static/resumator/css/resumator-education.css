@@ -1,0 +1,34 @@
+.resumator-education{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #555555;
+}
+.resumator-education a,
+.resumator-education a{
+    color: #555555;
+}
+.resumator-education a:hover,
+.resumator-education a:hover{
+    color: #000000;
+}
+.resumator-education .authors,
+.resumator-education .conference,
+.resumator-education p{
+    font-size: 14px;
+}
+.resumator-education p{
+    font-size: 14px;
+}
+.resumator-education .description{
+    min-height: 50px;
+    border-bottom: thin solid #eeeeee;
+}
+.resumator-education .date,
+.resumator-education .number{
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+.resumator-education .limit{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}

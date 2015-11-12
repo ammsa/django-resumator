@@ -1,0 +1,8 @@
+{% extends "resumator/base.html" %}
+
+{% block title %}{{ resumator_basicinformation.name }} - About{% endblock %}
+
+{% block extracontent %}
+                <h5>About {{ resumator_basicinformation.name }}</h5>
+                {% spaceless %}{{ resumator_basicinformation.long_bio | safe}}{% endspaceless %}
+{% endblock %}

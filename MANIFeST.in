@@ -1,0 +1,6 @@
+include LICENSE
+include README.rst
+recursive-include resumator/static *
+recursive-include resumator/templates *
+recursive-include resumator/templatetags *
+recursive-include docs *

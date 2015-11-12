@@ -1,0 +1,112 @@
+b{
+    font-weight:700;
+}
+/* turn on unselectable */
+div{
+
+}
+
+::selection {
+  background: #e6e6e6; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #e6e6e6; /* Gecko Browsers */
+}
+.side-bar {
+
+}
+.side-bar-bio {
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+.side-bar-icon{
+    color: #555555;
+}
+.side-bar-items{
+     -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+.side-bar-item {
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-bottom: 10px;
+}
+.side-bar-links a,
+.side-bar-items a{
+    color: #555555;
+}
+.side-bar-links a:hover,
+.side-bar-items a:hover{
+    color: #000000;
+}
+.side-bar-item.hvr-grow{
+    display: block;
+}
+.side-bar-links {
+    margin-top: 100px;
+}
+.whole-content {
+    margin-top: 10%;
+}
+.content{
+    margin-top: 5%;
+}
+.side-line{
+    border-right: thick solid #ff0000;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.thumbnail-container {
+    width: 120px;
+    min-height: 120px;
+    max-height: inherit;
+    border-radius: 50%;
+}
+.center{
+    text-align: center;
+}
+.right-text{
+    text-align: right;
+}
+.tag{
+    display: inline-block;
+    height: 20px;
+    padding: 0 7px;
+    color: #555;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    box-sizing: border-box;
+    margin: 0 2px;
+}
+
+
+@media only screen and (max-width: 550px) {
+    .side-bar-icon {
+        display: none;
+    }
+    .side-line {
+        border-right: none;
+        border-bottom: thick solid #ff0000;
+        margin-bottom: 50px;
+    }
+    .thumbnail {
+        text-align: center;
+    }
+}

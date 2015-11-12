@@ -1,0 +1,39 @@
+.resumator-experience {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #555555;
+}
+.resumator-experience a,
+.resumator-experience a{
+    color: #555555;
+}
+.resumator-experience a:hover,
+.resumator-experience a:hover{
+    color: #000000;
+}
+.resumator-experience p{
+    font-size: 14px;
+}
+.resumator-experience .description{
+    min-height: 120px;
+    border-bottom: thin solid #eeeeee;
+}
+.resumator-experience .date{
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+.resumator-experience .limit{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.resumator-experience .image{
+    height:inherit;
+}
+.resumator-experience img{
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+}
+.resumator-experience .tags{
+    margin-bottom: 10px;
+}

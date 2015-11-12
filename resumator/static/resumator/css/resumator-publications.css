@@ -1,0 +1,33 @@
+.resumator-publication{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #555555;
+}
+.resumator-publication a,
+.resumator-publication a{
+    color: #555555;
+}
+.resumator-publication a:hover,
+.resumator-publication a:hover{
+    color: #000000;
+}
+.resumator-publication .authors,
+.resumator-publication .conference,
+.resumator-publication p{
+    font-size: 14px;
+}
+.resumator-publication p{
+    font-size: 14px;
+}
+.resumator-publication .description{
+    min-height: 120px;
+    border-bottom: thin solid #eeeeee;
+}
+.resumator-publication .date{
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+}
+.resumator-publication .limit{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}

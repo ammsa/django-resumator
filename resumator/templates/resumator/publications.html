@@ -1,0 +1,33 @@
+{% extends "resumator/base.html" %}
+{% load staticfiles %}
+{% block extrastyles %}<link rel="stylesheet" type="text/css" href="{% static "resumator/css/resumator-publications.css" %}">{% endblock %}
+{% block extrafonts %}<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{% endblock %}
+
+{% block title %}{{ resumator_basicinformation.name }} - Publications{% endblock %}
+
+{% block extracontent %}
+                <h5>Publications</h5>
+                {% for publication in resumator_publication %}
+                <div class="row resumator-publication">
+                    {% if publication.link %}<a href="{{ publication.link }}">{% endif %}
+                        <div class="eleven columns">
+                            <div class="row">
+                                <div class="ten columns limit"><b>{{ publication }}</b></div>
+                                <div class="two columns date right-text">
+                                    {% if publication.year %}{{ publication.year }}{% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns authors">{{ publication.authors }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns conference"><p>{{ publication.conference }}</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns description">{% spaceless %}<p>{{ publication.abstract }}</p>{% endspaceless %}</div>
+                            </div>
+                        </div>
+                    {% if publication.link %}</a>{% endif %}
+                </div>
+                {% endfor %}
+{% endblock %}

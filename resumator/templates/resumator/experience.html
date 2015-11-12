@@ -1,0 +1,47 @@
+{% extends "resumator/base.html" %}
+{% load experience_extras %}
+{% load staticfiles %}
+{% block extrastyles %}<link rel="stylesheet" type="text/css" href="{% static "resumator/css/resumator-experience.css" %}">{% endblock %}
+{% block extrafonts %}<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{% endblock %}
+
+{% block title %}{{ resumator_basicinformation.name }} - Experience{% endblock %}
+
+{% block extracontent %}
+                <h5>Experience</h5>
+                {% for experience in resumator_experience %}
+                <div class="row resumator-experience">
+                    {% if experience.link %}<a href="{{ experience.link }}">{% endif %}
+                        <div class="ten columns">
+                            <div class="row">
+                                <div class="seven columns limit"><b>{{ experience }}</b></div>
+                                <div class="five columns date right-text">
+                                    {% if experience.start_date and not experience.end_date%}{{ experience.start_date }} - <i>Ongoing</i>
+                                    {% elif experience.start_date and experience.end_date%}{{ experience.start_date }} - {{ experience.end_date }}
+                                    {% elif experience.end_date and not experience.start_date%}{{ experience.end_date }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                {% with used_languages|get_item:experience as experience_used_languages %}
+                                {% if experience_used_languages %}
+                                <div class="twelve columns tags">
+                                    {% for language in experience_used_languages %}
+                                    <span class="tag">{{ language }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div class="row">
+                                <div class="twelve columns description">{% spaceless %}<p>{{ experience.description }}</p>{% endspaceless %}</div>
+                            </div>
+                        </div>
+                    {% comment %}{% if experience.image %}
+                        <div class="two columns image">
+                            <img src="{{ experience.image }}">
+                        </div>
+                    {% endif %}{% endcomment %}
+                    {% if experience.link %}</a>{% endif %}
+                </div>
+                {% endfor %}
+{% endblock %}
