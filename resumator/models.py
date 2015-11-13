@@ -2,6 +2,7 @@ from django.db import models
 from solo.models import SingletonModel
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ValidationError
 
 
 class BasicInformation(SingletonModel):
@@ -52,6 +53,11 @@ class Education(models.Model):
     def __str__(self):
         return '%s in %s' % (self.abbreviation, self.major)
 
+    def clean(self):
+        if self.start_date > self.end_date:
+            raise ValidationError({"start_date": _("Start date must be before end date."),
+                                   "end_date": _("Start date must be before end date.")})
+
     class Meta:
         ordering = ['-end_date']
 
@@ -96,6 +102,11 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
+    def clean(self):
+        if self.start_date > self.end_date:
+            raise ValidationError({"start_date": _("Start date must be before end date."),
+                                   "end_date": _("Start date must be before end date.")})
+
     def get_languages(self):
         languages = Language.objects.all()
         used_languages = []
@@ -130,6 +141,11 @@ class Experience(models.Model):
 
     class Meta:
         ordering = ['-end_date']
+
+    def clean(self):
+        if self.start_date > self.end_date:
+            raise ValidationError({"start_date": _("Start date must be before end date."),
+                                   "end_date": _("Start date must be before end date.")})
 
     def get_languages(self):
         languages = Language.objects.all()
