@@ -1,11 +1,12 @@
-from django.db import models
-from solo.models import SingletonModel
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import ObjectDoesNotExist
+from django.db import models
 from django.core.exceptions import ValidationError
+from django.core.exceptions import ObjectDoesNotExist
+
+from solo.models import SingletonModel
 
 
-class BasicInformation(SingletonModel):
+class TestBasicInformation(SingletonModel):
     name = models.CharField(max_length=25,
                             default="John Smith")
     short_bio = models.CharField(max_length=100,
@@ -20,14 +21,8 @@ class BasicInformation(SingletonModel):
     linkedin = models.URLField(blank=True)
     image = models.ImageField(upload_to="media/images", blank=True)
 
-    def __repr__(self):
-        return '<BasicInformation: %s>' % self.name
 
-    def __str__(self):
-        return self.name.title()
-
-
-class Education(models.Model):
+class TestEducation(models.Model):
     name = models.CharField(max_length=50,
                             verbose_name=_("University name"))
     abbreviation = models.CharField(max_length=10,
@@ -47,12 +42,6 @@ class Education(models.Model):
                            default=None,
                            verbose_name=_("GPA"))
 
-    def __repr__(self):
-        return '<Education: %s>' % self.name
-
-    def __str__(self):
-        return '%s in %s' % (self.abbreviation, self.major)
-
     def save(self, *args, **kwargs):
         self.clean()
         return super(self.__class__, self).save(*args, **kwargs)
@@ -66,7 +55,7 @@ class Education(models.Model):
         ordering = ['-end_date']
 
 
-class Publication(models.Model):
+class TestPublication(models.Model):
     title = models.CharField(max_length=100)
     authors = models.CharField(max_length=200,
                                blank=True)
@@ -77,17 +66,11 @@ class Publication(models.Model):
                             blank=True)
     link = models.URLField(blank=True)
 
-    def __repr__(self):
-        return '<Publication: %s>' % self.name
-
-    def __str__(self):
-        return self.title
-
     class Meta:
         ordering = ['-year']
 
 
-class Project(models.Model):
+class TestProject(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(default=None,
                                    blank=True,
@@ -100,12 +83,6 @@ class Project(models.Model):
                                 verbose_name=_("end date"))
     link = models.URLField(blank=True)
 
-    def __repr__(self):
-        return '<Project: %s>' % self.name
-
-    def __str__(self):
-        return self.name
-
     def save(self, *args, **kwargs):
         self.clean()
         return super(self.__class__, self).save(*args, **kwargs)
@@ -116,7 +93,7 @@ class Project(models.Model):
                                    "end_date": _("Start date must be before end date.")})
 
     def get_languages(self):
-        languages = Language.objects.all()
+        languages = TestLanguage.objects.all()
         used_languages = []
         for language in languages:
             try:
@@ -127,7 +104,7 @@ class Project(models.Model):
         return {self: used_languages}
 
 
-class Experience(models.Model):
+class TestExperience(models.Model):
     company = models.CharField(max_length=50)
     role = models.CharField(max_length=150)
     start_date = models.DateField(null=True,
@@ -141,12 +118,6 @@ class Experience(models.Model):
     link = models.URLField(blank=True)
     image = models.ImageField(blank=True)
 
-    def __repr__(self):
-        return '<Experience: %s>' % self.company
-
-    def __str__(self):
-        return '%s at %s' % (self.role.capitalize(), self.company)
-
     class Meta:
         ordering = ['-end_date']
 
@@ -160,26 +131,20 @@ class Experience(models.Model):
                                    "end_date": _("Start date must be before end date.")})
 
     def get_languages(self):
-        languages = Language.objects.all()
+        languages = TestLanguage.objects.all()
         used_languages = []
         for language in languages:
             try:
                 language.experience.get(pk=self.pk)
-                used_languages.append(language.name)
+                used_languages.append(language)
             except ObjectDoesNotExist:
                 pass
         return {self: used_languages}
 
 
-class Language(models.Model):
+class TestLanguage(models.Model):
     name = models.CharField(max_length=50)
-    experience = models.ManyToManyField(Experience,
+    experience = models.ManyToManyField(TestExperience,
                                         blank=True)
-    projects = models.ManyToManyField(Project,
+    projects = models.ManyToManyField(TestProject,
                                       blank=True)
-
-    def __repr__(self):
-        return '<Language: %s>' % self.name
-
-    def __str__(self):
-        return self.name
