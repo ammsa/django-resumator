@@ -115,11 +115,13 @@ Email: AmmsA@users.noreply.github.com
                                 <div class="nine columns">Email</div>
                             </div>
                         </a>
+                        {% if resumator_basicinformation.github != None %}
                         <a href="{{ resumator_basicinformation.github }}">
                             <div class="row side-bar-item hvr-grow">
                                 <div class="two columns side-bar-icon"><span class="lnr lnr-link"></span></div>
                                 <div class="nine columns">Github</div>
                             </div>
+                        </a>
                         </a>
                         {% if resumator_basicinformation.linkedin != None %}
                         <a href="{{ resumator_basicinformation.linkedin}}">
