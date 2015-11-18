@@ -1,0 +1,22 @@
+language: python
+python:
+  - "2.7"
+env:
+    - DATABASE_ENGINE=sqlite
+    - DATABASE_ENGINE=postgres
+    - DATABASE_ENGINE=mysql
+
+# command to install dependencies
+install:
+    - "pip install -r requirements.txt"
+    - sh -c "if [ '$DATABASE_ENGINE' = 'postgres' ];
+      then
+        pip install psycopg2;
+      fi"
+    - sh -c "if [ '$DATABASE_ENGINE' = 'mysql' ];
+      then
+        pip install mysqlclient;
+        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql;
+      fi"
+# # command to run tests
+script: python runtests.py

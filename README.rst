@@ -1,8 +1,12 @@
 =====
 django-resumator
 =====
+|pypi| |travis|
 
-django-resumator is a lightwight app to create web-based resumes. Please visit [theresumator](https://github.com/AmmsA/theresumator) for a django project that uses it. 
+
+django-resumator is a lightwight app to create web-based resumes. Please visit `theresumator`_ for a django project that uses it. 
+
+
 
 installation
 -----------
@@ -56,4 +60,13 @@ Contributing
 License
 -----------
 
-All parts of theresumator are free to use and abuse under the [open-source MIT license](https://github.com/AmmsA/django-resumator/blob/master/LICENSE).
+All parts of theresumator are free to use and abuse under the `open-source MIT license`_.
+
+.. |pypi| image:: https://badge.fury.io/py/django-resumator.svg
+   :target: https://badge.fury.io/py/django-resumator
+.. |travis| image:: https://travis-ci.org/AmmsA/django-resumator.svg?branch=master
+   :alt: Build Status - master branch
+   :target: https://travis-ci.org/AmmsA/django-resumator
+.. _`theresumator`: https://github.com/AmmsA/theresumator
+.. _`open-source MIT license`: https://github.com/AmmsA/django-resumator/blob/master/LICENSE
+
