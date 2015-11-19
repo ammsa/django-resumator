@@ -1,22 +1,21 @@
 language: python
 python:
-  - "2.7"
+- '2.7'
 env:
-    - DATABASE_ENGINE=sqlite
-    - DATABASE_ENGINE=postgres
-    - DATABASE_ENGINE=mysql
-
-# command to install dependencies
+- DATABASE_ENGINE=sqlite
+- DATABASE_ENGINE=postgres
+- DATABASE_ENGINE=mysql
 install:
-    - "pip install -r requirements.txt"
-    - sh -c "if [ '$DATABASE_ENGINE' = 'postgres' ];
-      then
-        pip install psycopg2;
-      fi"
-    - sh -c "if [ '$DATABASE_ENGINE' = 'mysql' ];
-      then
-        pip install mysqlclient;
-        mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql;
-      fi"
-# # command to run tests
+- pip install -r requirements.txt
+- sh -c "if [ '$DATABASE_ENGINE' = 'postgres' ]; then pip install psycopg2; fi"
+- sh -c "if [ '$DATABASE_ENGINE' = 'mysql' ]; then pip install mysqlclient; mysql_tzinfo_to_sql
+  /usr/share/zoneinfo | mysql -u root mysql; fi"
 script: python runtests.py
+deploy:
+  provider: pypi
+  user: ammsa
+  password:
+    secure: tJWgT0NyUPBKNPbZnyuc7AEn7aE1khdjWG1AiJ+W5Q7NQFme8WsDAYXBFJTTVZ+vA/AZlIYHumdd+q3yCm3cZe5Gu8paIn0pUq4FjOt1biSwHr/moe0ZTqsPVEonL5gRItAjcgW8t3I9mXN6PZeIsLPLpB8iVseVGqiITMoDGJn4A+3e9fqNmcLmKDlPCae9U/b1Kz4sN3ekdEpQVl5y5neqof+lZSwez2dF7m58Ubzr+m98JKfJqi0hx0JQpxerj3QHHTqdg3l8SJyZENI7tZMuwqySieGEAxSRDP5nti3HMN0YPdRbl5qat01mn3vgUkNg7KHRs6A5L1LZipDlwxz0efjYhfgrNNxME1X4Ksptqr3fauW2SSDZAXPpGSj8qCrf/acqldMAdc1i2gozBx34rAixu88fr7iByucQAUv+/163wq6ARdQxQc4i4sGK9kLj1iPQhfL5UrNyxz1KAsu5esxX4wNeGztywwUh4xYNZ7Z4NH2GX/CaA2EFxBofDnmzj3Bjx2DzU+Df4RBpxKEGVlm8fqtR+jAyNy3oD4ua9Q156o3AGon02QL+Jv2Wngbidfh8LiqRaKbgHtir+hpLU9EUyk03JGDukmq4iGod8iZa6jSPMHDOFtZs5WihTQRQTvEbdtf3Kou7V30eLHBQRqAvDcKATzRiJc/4ZPE=
+  on:
+    tags: true
+    branch: master
