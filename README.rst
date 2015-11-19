@@ -13,6 +13,10 @@ installation
     
        pip install django-resumator
 
+or
+
+       python setup.py install
+
 Quick start
 -----------
 
