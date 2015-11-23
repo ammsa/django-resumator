@@ -18,7 +18,7 @@ class BasicInformation(SingletonModel):
     email = models.EmailField(default="email@example.com")
     github = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
-    image = models.ImageField(upload_to="media/images", blank=True)
+    image = models.ImageField(upload_to="images", blank=True)
 
     def __repr__(self):
         return '<BasicInformation: %s>' % self.name
@@ -139,7 +139,8 @@ class Experience(models.Model):
     description = models.TextField(default=None,
                                    verbose_name=_("description"))
     link = models.URLField(blank=True)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to="images",
+		    	      blank=True)
 
     def __repr__(self):
         return '<Experience: %s>' % self.company
