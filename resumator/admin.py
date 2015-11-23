@@ -16,11 +16,3 @@ admin.site.register(Experience)
 admin.site.register(Language)
 admin.site.register(Publication)
 admin.site.register(Education)
-
-
-# make BasicInformation singleton if it does not already exist
-try:
-    basic_information = BasicInformation.get_solo()
-except OperationalError:
-    pass
-
