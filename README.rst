@@ -29,10 +29,10 @@ Quick start
 
 2. Add the following to your setting.py::
 
-        MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-        MEDIA_URL = '/'
+        MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media')
+        MEDIA_URL = '/media/'
 
-2. Include the resumator URLconf in your project urls.py and add MEDIA URL to urlpatterns like this::
+2. Include the resumator URLconf in your project urls.py and add MEDIA URL to urlpatterns like this (Note: Don't do this in production)::
 
         from django.conf import settings
         from django.conf.urls.static import static
