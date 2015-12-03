@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(default=b'email@example.com', max_length=254)),
                 ('github', models.URLField(blank=True)),
                 ('linkedin', models.URLField(blank=True)),
-                ('image', models.ImageField(upload_to=b'media/images', blank=True)),
+                ('image', models.URLField(blank=True)),
             ],
             options={
                 'abstract': False,
@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                 ('end_date', models.DateField(null=True, verbose_name='end date', blank=True)),
                 ('description', models.TextField(default=None, verbose_name='description')),
                 ('link', models.URLField(blank=True)),
-                ('image', models.ImageField(upload_to=b'', blank=True)),
+                ('image', models.URLField(blank=True)),
             ],
             options={
                 'ordering': ['-end_date'],

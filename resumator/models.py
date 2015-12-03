@@ -19,7 +19,7 @@ class BasicInformation(SingletonModel):
     email = models.EmailField(default="email@example.com")
     github = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
-    image = models.ImageField(upload_to="images", blank=True)
+    image = models.URLField(blank=True)
 
     def __repr__(self):
         return '<BasicInformation: %s>' % self.name
