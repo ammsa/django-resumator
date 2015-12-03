@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(default=b'John Smith', max_length=25)),
                 ('short_bio', models.CharField(default=b'My short bio', max_length=100, verbose_name='short bio', blank=True)),
-                ('long_bio', models.TextField(default=b'My long bio', verbose_name='long bio', blank=True)),
+                ('long_bio', models.TextField(default=b'Please go to the admin page to modify your resume. Append /admin to your URL to visit the admin page', verbose_name='long bio', blank=True)),
                 ('email', models.EmailField(default=b'email@example.com', max_length=254)),
                 ('github', models.URLField(blank=True)),
                 ('linkedin', models.URLField(blank=True)),
