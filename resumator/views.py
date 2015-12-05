@@ -30,7 +30,6 @@ def projects(request):
                     'resumator_project': projects_list,
                     'used_languages': used_languages,
                     }
-    print context_dict
     context = RequestContext(request,
                              utils.used_models(context_dict,
                                                ignore_models=["resumator_language"]))
