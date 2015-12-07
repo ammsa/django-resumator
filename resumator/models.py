@@ -58,9 +58,10 @@ class Education(models.Model):
         return super(self.__class__, self).save(*args, **kwargs)
 
     def clean(self):
-        if self.start_date > self.end_date:
-            raise ValidationError({"start_date": _("Start date must be before end date."),
-                                   "end_date": _("Start date must be before end date.")})
+        if self.start_date and self.end_date:
+            if self.start_date > self.end_date:
+                raise ValidationError({"start_date": _("Start date must be before end date."),
+                                       "end_date": _("Start date must be before end date.")})
 
     class Meta:
         ordering = ['-end_date']
@@ -111,9 +112,10 @@ class Project(models.Model):
         return super(self.__class__, self).save(*args, **kwargs)
 
     def clean(self):
-        if self.start_date > self.end_date:
-            raise ValidationError({"start_date": _("Start date must be before end date."),
-                                   "end_date": _("Start date must be before end date.")})
+        if self.start_date and self.end_date:
+            if self.start_date > self.end_date:
+                raise ValidationError({"start_date": _("Start date must be before end date."),
+                                       "end_date": _("Start date must be before end date.")})
 
     def get_languages(self):
         languages = Language.objects.all()
@@ -156,9 +158,10 @@ class Experience(models.Model):
         return super(self.__class__, self).save(*args, **kwargs)
 
     def clean(self):
-        if self.start_date > self.end_date:
-            raise ValidationError({"start_date": _("Start date must be before end date."),
-                                   "end_date": _("Start date must be before end date.")})
+        if self.start_date and self.end_date:
+            if self.start_date > self.end_date:
+                raise ValidationError({"start_date": _("Start date must be before end date."),
+                                       "end_date": _("Start date must be before end date.")})
 
     def get_languages(self):
         languages = Language.objects.all()
