@@ -146,7 +146,7 @@ class Experience(models.Model):
                                    verbose_name=_("description"))
     link = models.URLField(blank=True)
     image = models.ImageField(upload_to="images",
-		    	      blank=True)
+                              blank=True)
 
     def __repr__(self):
         return '<Experience: %s>' % self.company
