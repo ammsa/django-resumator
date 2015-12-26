@@ -32,6 +32,13 @@ Email: AmmsA@users.noreply.github.com
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.0.2/css/hover-min.css">
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="{% static "resumator/css/base.css" %}">
+    {% if resumator_settings %}
+    <style>
+        .side-line {
+            border-right: thick solid {{ resumator_settings.base_color }};
+        }
+    </style>
+    {% endif %}
     {% block extrastyles %}{% endblock %}
 
     <!-- Favicon

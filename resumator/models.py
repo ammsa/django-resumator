@@ -1,8 +1,9 @@
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models
-from solo.models import SingletonModel
 from django.utils.translation import ugettext_lazy as _
-from django.core.exceptions import ObjectDoesNotExist
-from django.core.exceptions import ValidationError
+
+from solo.models import SingletonModel
+from colorful.fields import RGBColorField
 
 
 class BasicInformation(SingletonModel):
@@ -193,3 +194,15 @@ class Language(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Settings(SingletonModel):
+    base_color = RGBColorField(blank=False,
+                               verbose_name=_("Base color"),
+                               default="bc0000")
+
+    def __repr__(self):
+        return '<Settings: %s>' % self.base_color
+
+    def __str__(self):
+        return 'Settings Singleton'

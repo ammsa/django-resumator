@@ -8,6 +8,7 @@ from models import Experience
 from models import Language
 from models import Publication
 from models import Education
+from models import Settings
 
 
 admin.site.register(BasicInformation, SingletonModelAdmin)
@@ -16,3 +17,4 @@ admin.site.register(Experience)
 admin.site.register(Language)
 admin.site.register(Publication)
 admin.site.register(Education)
+admin.site.register(Settings, SingletonModelAdmin)

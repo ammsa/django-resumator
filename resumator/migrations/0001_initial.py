@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+import colorful.fields
 
 
 class Migration(migrations.Migration):
@@ -89,6 +90,16 @@ class Migration(migrations.Migration):
             ],
             options={
                 'ordering': ['-year'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Settings',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('base_color', colorful.fields.RGBColorField(default=b'bc0000', verbose_name='Base color')),
+            ],
+            options={
+                'abstract': False,
             },
         ),
         migrations.AddField(
