@@ -60,7 +60,7 @@ div{
     margin-top: 5%;
 }
 .side-line{
-    border-right: thick solid #ff0000;
+    border-right: thick solid #ef4a60;
 }
 .img-circle {
     border-radius: 50%;
@@ -104,6 +104,7 @@ div{
     .side-line {
         border-right: none; !important;
         border-bottom: thick solid #ef4a60;
+        padding-bottom: 30px;
         margin-bottom: 50px;
     }
     .thumbnail {
