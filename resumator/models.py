@@ -17,7 +17,8 @@ class BasicInformation(SingletonModel):
                                 verbose_name=_("long bio"),
                                 default="Please go to the admin page to modify your resume."
                                         " Append /admin to your URL to visit the admin page")
-    email = models.EmailField(default="email@example.com")
+    email = models.EmailField(blank=True)
+    resumepdf = models.URLField(blank=True)
     github = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
     image = models.URLField(blank=True)

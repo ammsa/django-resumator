@@ -16,7 +16,8 @@ class TestBasicInformation(SingletonModel):
     long_bio = models.TextField(blank=True,
                                 verbose_name=_("long bio"),
                                 default="My long bio")
-    email = models.EmailField(default="email@example.com")
+    email = models.EmailField(blank=True)
+    resumepdf = models.URLField(blank=True)
     github = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
     image = models.ImageField(upload_to="media/images", blank=True)

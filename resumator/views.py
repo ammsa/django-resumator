@@ -13,8 +13,8 @@ from resumator import utils
 def about(request):
     settings = Settings.objects.get()
     basic_information = BasicInformation.objects.get()
-    context_dict = {"resumator_basicinformation": basic_information,
-                    "resumator_settings": settings}
+    context_dict = {'resumator_basicinformation': basic_information,
+                    'resumator_settings': settings}
     context = RequestContext(request,
                              utils.used_models(context_dict))
     template = loader.get_template('resumator/index.html')
@@ -31,11 +31,11 @@ def projects(request):
     context_dict = {'resumator_basicinformation': basic_information,
                     'resumator_project': projects_list,
                     'used_languages': used_languages,
-                    "resumator_settings": settings
+                    'resumator_settings': settings
                     }
     context = RequestContext(request,
                              utils.used_models(context_dict,
-                                               ignore_models=["resumator_language"]))
+                                               ignore_models=['resumator_language']))
     template = loader.get_template('resumator/projects.html')
     return HttpResponse(template.render(context))
 
@@ -50,7 +50,7 @@ def experience(request):
     context_dict = {'resumator_basicinformation': basic_information,
                     'resumator_experience': experience_list,
                     'used_languages': used_languages,
-                    "resumator_settings": settings
+                    'resumator_settings': settings
                     }
     context = RequestContext(request,
                              utils.used_models(context_dict))
@@ -64,7 +64,7 @@ def publications(request):
     publication_list = Publication.objects.all()
     context_dict = {'resumator_basicinformation': basic_information,
                     'resumator_publication': publication_list,
-                    "resumator_settings": settings
+                    'resumator_settings': settings
                     }
     context = RequestContext(request,
                              utils.used_models(context_dict))
@@ -78,7 +78,7 @@ def education(request):
     education_list = Education.objects.all()
     context_dict = {'resumator_basicinformation': basic_information,
                     'resumator_education': education_list,
-                    "resumator_settings": settings
+                    'resumator_settings': settings
                     }
     context = RequestContext(request,
                              utils.used_models(context_dict))

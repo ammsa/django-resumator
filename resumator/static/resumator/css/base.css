@@ -111,3 +111,15 @@ div{
         text-align: center;
     }
 }
+
+.resumator-box-info {
+    position:absolute;
+    right:10px;
+    font-size: 10px;
+    color: #999;
+}
+
+.resumator-box-info a,
+.resumator-box-info a:hover {
+    color: #999;
+}
