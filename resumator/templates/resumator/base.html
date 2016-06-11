@@ -3,7 +3,7 @@
 <!--
 theresumator v{% get_version %} | MIT License | https://github.com/AmmsA/theresumator
 Author: Mustafa S
-Email: AmmsA@users.noreply.github.com
+Email: Contact from https://github.com/AmmsA/
 -->
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
@@ -37,6 +37,12 @@ Email: AmmsA@users.noreply.github.com
         .side-line {
             border-right: thick solid {{ resumator_settings.base_color }};
         }
+        @media only screen and (max-width: 550px) {
+            .side-line {
+                border-bottom: thick solid {{ resumator_settings.base_color }};
+            }
+        }
+
     </style>
     {% endif %}
     {% block extrastyles %}{% endblock %}
@@ -57,11 +63,11 @@ Email: AmmsA@users.noreply.github.com
         <div class="row whole-content" >
             <div class="four columns side-line side-bar">
                 <div class="thumbnail">
-                    {% if resumator_basicinformation.image != None %}
+                    {% if resumator_basicinformation.image %}
                     <div class="row">
                         <div class="eleven columns">
                             <img class="thumbnail-container img-circle"
-                                 src="{{ MEDIA_URL }}{{ resumator_basicinformation.image }}">
+                                 src="{{ resumator_basicinformation.image }}">
                         </div>
                     </div>
                     {% endif %}
@@ -69,7 +75,7 @@ Email: AmmsA@users.noreply.github.com
                         <div class="eleven columns"><h4>{{ resumator_basicinformation.name }}</h4></div>
                     </div>
                 </div>
-                {% if resumator_basicinformation.short_bio != None %}
+                {% if resumator_basicinformation.short_bio %}
                 <div class="side-bar-bio row">
                     <div class="eleven columns">{{ resumator_basicinformation.short_bio }}</div>
                 </div>
@@ -114,15 +120,17 @@ Email: AmmsA@users.noreply.github.com
                         </div>
                     </a>
                     {% endif %}
-                    {% if resumator_basicinformation.email != None or resumator_basicinformation.github != None or resumator_basicinformation.linkedin != None%}
+                    {% if resumator_basicinformation.email or resumator_basicinformation.github or resumator_basicinformation.linkedin %}
                     <div class="side-bar-links">
+                        {% if resumator_basicinformation.email %}
                         <a href="mailto:{{ resumator_basicinformation.email }}">
                             <div class="row side-bar-item hvr-grow">
                                 <div class="two columns side-bar-icon"><span class="lnr lnr-envelope"></span></div>
                                 <div class="nine columns">Email</div>
                             </div>
                         </a>
-                        {% if resumator_basicinformation.github != None %}
+                        {% endif %}
+                        {% if resumator_basicinformation.github %}
                         <a href="{{ resumator_basicinformation.github }}">
                             <div class="row side-bar-item hvr-grow">
                                 <div class="two columns side-bar-icon"><span class="lnr lnr-link"></span></div>
@@ -130,7 +138,7 @@ Email: AmmsA@users.noreply.github.com
                             </div>
                         </a>
                         {% endif %}
-                        {% if resumator_basicinformation.linkedin != None %}
+                        {% if resumator_basicinformation.linkedin %}
                         <a href="{{ resumator_basicinformation.linkedin}}">
                             <div class="row side-bar-item hvr-grow">
                                 <div class="two columns side-bar-icon"><span class="lnr lnr-link"></span></div>
@@ -154,6 +162,7 @@ Email: AmmsA@users.noreply.github.com
             </div>
         </div>
     </div>
+    <p class="resumator-box-info">Created using <a href="https://github.com/AmmsA/theresumator">theresumator</a>.</p>
     <!-- End Document
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     {% block extrabody %}{% endblock %}
