@@ -37,3 +37,8 @@
 .resumator-experience .tags{
     margin-bottom: 10px;
 }
+@media only screen and (max-width: 550px) {
+   .resumator-experience .date{
+        text-align: left;
+    }
+}

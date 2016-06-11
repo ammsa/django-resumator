@@ -32,3 +32,9 @@
     overflow:hidden;
     text-overflow:ellipsis;
 }
+@media only screen and (max-width: 550px) {
+   .resumator-education .date,
+   .resumator-education .number{
+        text-align: left;
+    }
+}
