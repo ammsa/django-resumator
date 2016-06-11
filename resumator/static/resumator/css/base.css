@@ -107,6 +107,10 @@ div{
         padding-bottom: 30px;
         margin-bottom: 50px;
     }
+
+    .side-bar-links {
+        margin-top: 78px;
+    }
     .thumbnail {
         text-align: center;
     }
