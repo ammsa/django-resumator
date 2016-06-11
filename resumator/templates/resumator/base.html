@@ -37,6 +37,12 @@ Email: Contact from https://github.com/AmmsA/
         .side-line {
             border-right: thick solid {{ resumator_settings.base_color }};
         }
+        @media only screen and (max-width: 550px) {
+            .side-line {
+                border-bottom: thick solid {{ resumator_settings.base_color }};
+            }
+        }
+
     </style>
     {% endif %}
     {% block extrastyles %}{% endblock %}

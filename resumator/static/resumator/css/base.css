@@ -97,17 +97,24 @@ div{
     margin: 0 2px;
 }
 
-
 @media only screen and (max-width: 550px) {
     .side-bar-icon {
         display: none;
     }
     .side-line {
-        border-right: none;
-        border-bottom: thick solid #ff0000;
+        border-right: none; !important;
+        border-bottom: thick solid #ef4a60;
         margin-bottom: 50px;
     }
     .thumbnail {
+        text-align: center;
+    }
+
+    .side-bar-items a {
+        text-align: center;
+    }
+
+    .side-bar-bio{
         text-align: center;
     }
 }
