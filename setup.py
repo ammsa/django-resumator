@@ -20,7 +20,7 @@ setup(
     long_description=README,
     url='https://github.com/AmmsA/django-resumator',
     author='Mustafa S',
-    author_email='AmmsA@users.noreply.github.com',
+    author_email='mabualsaud@outlook.com',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
