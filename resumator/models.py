@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from solo.models import SingletonModel
 from colorful.fields import RGBColorField
 
+DATE_INPUT_FORMATS = ('%m-%Y')
 
 class BasicInformation(SingletonModel):
     name = models.CharField(max_length=25,
@@ -36,10 +37,12 @@ class Education(models.Model):
                                     default=None,
                                     verbose_name=_("Degree abbreviation"))
     start_date = models.DateField(null=True, blank=True,
-                                  verbose_name=_("start date"))
+                                  verbose_name=_("start date"),
+                                  input_formats=DATE_INPUT_FORMATS)
     end_date = models.DateField(null=True,
                                 blank=True,
-                                verbose_name=_("end date"))
+                                verbose_name=_("end date"),
+                                input_formats=DATE_INPUT_FORMATS)
     major = models.CharField(max_length=50,
                              blank=True,
                              default=None)
@@ -98,10 +101,12 @@ class Project(models.Model):
                                    verbose_name=_("description"))
     start_date = models.DateField(null=True,
                                   blank=True,
-                                  verbose_name=_("start date"))
+                                  verbose_name=_("start date"),
+                                  input_formats=DATE_INPUT_FORMATS)
     end_date = models.DateField(null=True,
                                 blank=True,
-                                verbose_name=_("end date"))
+                                verbose_name=_("end date"),
+                                input_formats=DATE_INPUT_FORMATS)
     link = models.URLField(blank=True)
 
     def __repr__(self):
@@ -139,10 +144,12 @@ class Experience(models.Model):
     role = models.CharField(max_length=150)
     start_date = models.DateField(null=True,
                                   blank=True,
-                                  verbose_name=_("start date"))
+                                  verbose_name=_("start date"),
+                                  input_formats=DATE_INPUT_FORMATS)
     end_date = models.DateField(null=True,
                                 blank=True,
-                                verbose_name=_("end date"))
+                                verbose_name=_("end date"),
+                                input_formats=DATE_INPUT_FORMATS)
     description = models.TextField(default=None,
                                    verbose_name=_("description"))
     link = models.URLField(blank=True)
