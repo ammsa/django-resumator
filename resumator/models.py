@@ -50,6 +50,11 @@ class Education(models.Model):
                            blank=True,
                            default=None,
                            verbose_name=_("GPA"))
+    evalulation_criteria = models.CharField(max_length=10,
+                                    blank=False,
+                                    default="GPA",
+                                    verbose_name=_("evaluation criteria"))
+
 
     def __repr__(self):
         return '<Education: %s>' % self.name
