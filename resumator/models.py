@@ -5,6 +5,30 @@ from django.utils.translation import ugettext_lazy as _
 from solo.models import SingletonModel
 from colorful.fields import RGBColorField
 
+class YearMonthField(models.CharField):
+    "A model field for storing dates without days"
+    default_error_messages = {
+        'invalid': _('Enter a valid year and month.'),
+    }
+
+    def __init__(self, input_formats=None, *args, **kwargs):
+        super(YearMonthField, self).__init__(*args, **kwargs)
+        self.input_formats = input_formats
+
+    def clean(self, value):
+        if value in validators.EMPTY_VALUES:
+            return None
+        if isinstance(value, datetime.datetime):
+            return format(value, '%b, %Y')
+        if isinstance(value, datetime.date):
+            return format(value, '%b, %Y')
+        for fmt in self.input_formats or YEARMONTH_INPUT_FORMATS:
+            try:
+                date = datetime.date(*time.strptime(value, fmt)[:3])
+                return format(date, '%b, %Y')
+            except ValueError:
+                continue
+        raise ValidationError(self.error_messages['invalid'])
 
 class BasicInformation(SingletonModel):
     name = models.CharField(max_length=25,
@@ -35,9 +59,9 @@ class Education(models.Model):
                                     blank=True,
                                     default=None,
                                     verbose_name=_("Degree abbreviation"))
-    start_date = models.DateField(null=True, blank=True,
+    start_date = YearMonthField(null=True, blank=True,
                                   verbose_name=_("start date"))
-    end_date = models.DateField(null=True,
+    end_date = YearMonthField(null=True,
                                 blank=True,
                                 verbose_name=_("end date"))
     major = models.CharField(max_length=50,
@@ -96,10 +120,10 @@ class Project(models.Model):
     description = models.TextField(default=None,
                                    blank=True,
                                    verbose_name=_("description"))
-    start_date = models.DateField(null=True,
+    start_date = YearMonthField(null=True,
                                   blank=True,
                                   verbose_name=_("start date"))
-    end_date = models.DateField(null=True,
+    end_date = YearMonthField(null=True,
                                 blank=True,
                                 verbose_name=_("end date"))
     link = models.URLField(blank=True)
@@ -137,10 +161,10 @@ class Project(models.Model):
 class Experience(models.Model):
     company = models.CharField(max_length=50)
     role = models.CharField(max_length=150)
-    start_date = models.DateField(null=True,
+    start_date = YearMonthField(null=True,
                                   blank=True,
                                   verbose_name=_("start date"))
-    end_date = models.DateField(null=True,
+    end_date = YearMonthField(null=True,
                                 blank=True,
                                 verbose_name=_("end date"))
     description = models.TextField(default=None,
