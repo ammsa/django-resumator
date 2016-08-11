@@ -59,9 +59,9 @@ class Education(models.Model):
                                     blank=True,
                                     default=None,
                                     verbose_name=_("Degree abbreviation"))
-    start_date = YearMonthField(null=True, blank=True,
+    start_date = YearMonthField(max_length=9, null=True, blank=True,
                                   verbose_name=_("start date"))
-    end_date = YearMonthField(null=True,
+    end_date = YearMonthField(max_length=9, null=True,
                                 blank=True,
                                 verbose_name=_("end date"))
     major = models.CharField(max_length=50,
@@ -120,10 +120,10 @@ class Project(models.Model):
     description = models.TextField(default=None,
                                    blank=True,
                                    verbose_name=_("description"))
-    start_date = YearMonthField(null=True,
+    start_date = YearMonthField(max_length=9, null=True,
                                   blank=True,
                                   verbose_name=_("start date"))
-    end_date = YearMonthField(null=True,
+    end_date = YearMonthField(max_length=9, null=True,
                                 blank=True,
                                 verbose_name=_("end date"))
     link = models.URLField(blank=True)
@@ -161,10 +161,10 @@ class Project(models.Model):
 class Experience(models.Model):
     company = models.CharField(max_length=50)
     role = models.CharField(max_length=150)
-    start_date = YearMonthField(null=True,
+    start_date = YearMonthField(max_length=9, null=True,
                                   blank=True,
                                   verbose_name=_("start date"))
-    end_date = YearMonthField(null=True,
+    end_date = YearMonthField(max_length=9, null=True,
                                 blank=True,
                                 verbose_name=_("end date"))
     description = models.TextField(default=None,
