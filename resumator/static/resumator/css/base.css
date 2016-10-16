@@ -136,3 +136,31 @@ div{
 .resumator-box-info a:hover {
     color: #999;
 }
+
+.tag .tagtiptext {
+    visibility:hidden;
+    height: 30px;
+    padding: 0 8px;
+    color: #555;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    box-sizing: border-box;
+    margin: 0 1px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tag:hover .tagtiptext {
+    visibility: visible;
+}
