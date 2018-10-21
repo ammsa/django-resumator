@@ -2,13 +2,13 @@ from django.contrib import admin
 from django.db.utils import OperationalError
 from solo.admin import SingletonModelAdmin
 
-from models import BasicInformation
-from models import Project
-from models import Experience
-from models import Language
-from models import Publication
-from models import Education
-from models import Settings
+from .models import BasicInformation
+from .models import Project
+from .models import Experience
+from .models import Language
+from .models import Publication
+from .models import Education
+from .models import Settings
 
 
 admin.site.register(BasicInformation, SingletonModelAdmin)
