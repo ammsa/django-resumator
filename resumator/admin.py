@@ -11,6 +11,7 @@ from models import Education
 from models import Settings
 
 
+
 admin.site.register(BasicInformation, SingletonModelAdmin)
 admin.site.register(Project)
 admin.site.register(Experience)
