@@ -28,6 +28,9 @@ def projects(request):
     used_languages = {}
     for project in projects_list:
         used_languages.update(project.get_languages())
+    tag = request.GET.get('tag')
+    if tag:
+        projects_list = projects_list.filter(tags__id=tag)
     context_dict = {'resumator_basicinformation': basic_information,
                     'resumator_project': projects_list,
                     'used_languages': used_languages,
@@ -62,6 +65,9 @@ def publications(request):
     settings = Settings.objects.get()
     basic_information = BasicInformation.objects.latest('pk')
     publication_list = Publication.objects.all()
+    tag = request.GET.get('tag')
+    if tag:
+        publication_list = publication_list.filter(tags__id=tag)
     context_dict = {'resumator_basicinformation': basic_information,
                     'resumator_publication': publication_list,
                     "resumator_settings": settings

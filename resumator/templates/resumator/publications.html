@@ -4,30 +4,76 @@
 {% block extrafonts %}<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>{% endblock %}
 
 {% block title %}{{ resumator_basicinformation.name }} - Publications{% endblock %}
+{% block extrahead %}
+<script type="text/javascript">
+    function toggleDescription(boolVal,id){
+    var fullDesc=document.getElementById('description-full-'+id);
+    var truncDesc=document.getElementById('description-trunc-'+id);
+    if(boolVal){
+        truncDesc.style.visibility = 'hidden';
+        truncDesc.style.display = 'none';
+        fullDesc.style.visibility = 'visible';
+        fullDesc.style.display = 'block';
+    }
+    else{
+        fullDesc.style.visibility = 'hidden';
+        fullDesc.style.display = 'none';
+        truncDesc.style.visibility = 'visible';
+        truncDesc.style.display = 'block';
+    }
+    }
+
+</script>
+{% endblock %}
 
 {% block extracontent %}
                 <h5>Publications</h5>
                 {% for publication in resumator_publication %}
                 <div class="row resumator-publication">
-                    {% if publication.link %}<a href="{{ publication.link }}">{% endif %}
                         <div class="eleven columns">
+                            {% if publication.link %}<a href="{{ publication.link }}">{% endif %}
                             <div class="row">
                                 <div class="ten columns limit"><b>{{ publication }}</b></div>
                                 <div class="two columns date right-text">
                                     {% if publication.year %}{{ publication.year }}{% endif %}
                                 </div>
                             </div>
+                            {% if publication.link %}</a>{% endif %}
+                            <div class="row">
+                                {% if publication.tags %}
+                                <div class="twelve columns tags">
+                                    {% for tag in publication.tags.all %}
+                                   <span class="tag"> <a href="/publications/?tag={{tag.id}}">{{tag.abbreviation.strip}}
+                                        <span class="tagtiptext">{{tag.name}}</span>
+                                        </a>
+                                   </span>
+                                    {% endfor %}
+                                </div>
+                                 {% endif %}
+                            </div>
+                            {% if publication.link %}<a href="{{ publication.link }}">{% endif %}
                             <div class="row">
                                 <div class="twelve columns authors">{{ publication.authors }}</div>
                             </div>
                             <div class="row">
                                 <div class="twelve columns conference"><p>{{ publication.conference }}</p></div>
                             </div>
+                            {% if publication.link %}</a>{% endif %}
                             <div class="row">
-                                <div class="twelve columns description">{% spaceless %}<p>{{ publication.abstract }}</p>{% endspaceless %}</div>
+                                <div id="description-full-{{publication.id}}"  style="{% if publication.abstract|length|add:'0' > 20 %}visibility:hidden;display:none{% endif %}"
+                                class="twelve columns description">{% spaceless %}<p>{{ publication.abstract }}</p>
+                                {% if publication.abstract|length|add:"0" > 20 %}
+                                    <button onclick="toggleDescription(false,{{publication.id}})">less</button>
+                                {% endif %}
+                                {% endspaceless %}</div>
+                                {% if publication.abstract|length|add:"0" > 20 %}
+                                    <div id="description-trunc-{{publication.id}}" class="twelve columns description">{% spaceless %}<p>{{ publication.abstract|truncatechars:20 }}...</p>
+                                        <button onclick="toggleDescription(true,{{publication.id}})">more</button>{% endspaceless %}
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
-                    {% if publication.link %}</a>{% endif %}
+
                 </div>
                 {% endfor %}
 {% endblock %}

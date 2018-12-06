@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(default=b'email@example.com', max_length=254)),
                 ('github', models.URLField(blank=True)),
                 ('linkedin', models.URLField(blank=True)),
-                ('image', models.ImageField(upload_to=b'media/images', blank=True)),
+                ('image', models.ImageField(upload_to=b'images', blank=True)),
             ],
             options={
                 'abstract': False,
@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                 ('end_date', models.DateField(null=True, verbose_name='end date', blank=True)),
                 ('description', models.TextField(default=None, verbose_name='description')),
                 ('link', models.URLField(blank=True)),
-                ('image', models.ImageField(upload_to=b'', blank=True)),
+                ('image', models.ImageField(upload_to=b'images', blank=True)),
             ],
             options={
                 'ordering': ['-end_date'],
@@ -101,6 +101,24 @@ class Migration(migrations.Migration):
             options={
                 'abstract': False,
             },
+        ),
+        migrations.CreateModel(
+            name='Tag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(unique=True, max_length=50)),
+                ('abbreviation', models.CharField(unique=True, max_length=5, verbose_name='Tag abbreviation')),
+            ],
+        ),
+        migrations.AddField(
+            model_name='publication',
+            name='tags',
+            field=models.ManyToManyField(related_name='publications', to='resumator.Tag', blank=True),
+        ),
+        migrations.AddField(
+            model_name='project',
+            name='tags',
+            field=models.ManyToManyField(related_name='projects', to='resumator.Tag', blank=True),
         ),
         migrations.AddField(
             model_name='language',

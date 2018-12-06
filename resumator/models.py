@@ -70,6 +70,19 @@ class Education(models.Model):
         ordering = ['-end_date']
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=50,unique=True
+                            )
+    abbreviation = models.CharField(max_length=5,unique=True,
+                                    verbose_name=_("Tag abbreviation"))
+
+    def __repr__(self):
+        return '<Tag: %s>' % self.name
+
+    def __str__(self):
+        return '%s - %s' % (self.name, self.abbreviation)
+
+
 class Publication(models.Model):
     title = models.CharField(max_length=100)
     authors = models.CharField(max_length=200,
@@ -80,6 +93,7 @@ class Publication(models.Model):
     year = models.CharField(max_length=4,
                             blank=True)
     link = models.URLField(blank=True)
+    tags = models.ManyToManyField(to=Tag, blank=True, related_name='publications')
 
     def __repr__(self):
         return '<Publication: %s>' % self.name
@@ -103,6 +117,7 @@ class Project(models.Model):
                                 blank=True,
                                 verbose_name=_("end date"))
     link = models.URLField(blank=True)
+    tags = models.ManyToManyField(to=Tag, blank=True, related_name='projects')
 
     def __repr__(self):
         return '<Project: %s>' % self.name
